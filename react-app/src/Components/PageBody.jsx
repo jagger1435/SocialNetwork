@@ -1,37 +1,25 @@
 import React from 'react';
+import Dialogs from "./Dialogs";
+import Profile from "./Profile";
+import {Route, Routes} from "react-router-dom";
+import RMenu from "./RMenu";
 
-const PageBody = () => {
+
+const PageBody = (props) => {
     return (
         <div id="page_body" className="fl_r">
-
-
             <div className="wide_column_left">
-                <div className="narrow_column_wrap">
-                    <div className="page_block ui_rmenu ui_rmenu_pr _ui_rmenu_auto_expand" id="feed_rmenu"
-                         role="list">
-                        <div id="ui_rmenu_news_list" data-sublist-id="news"
-                             className="_ui_rmenu_sublist _ui_rmenu_news_list ">
-                            <a id="ui_rmenu_photos" href=""
-                               className="ui_rmenu_subitem  _ui_item_photos feed_section_photos ">
-                                <span>подмею1</span>
-                            </a>
-                            <a id="ui_rmenu_friends" href=""
-                               className="ui_rmenu_subitem  _ui_item_friends feed_section_friends ">
-                                <span>подменю2</span>
-                            </a><a id="ui_rmenu_groups" href=""
-                                   className="ui_rmenu_subitem  _ui_item_groups feed_section_groups ">
-                            <span>подменю3</span>
-                        </a>
-                        </div>
-                        <div className="ui_rmenu_sep"></div>
-                    </div>
-                </div>
-
+                <RMenu/>
                 <div className="wide_column ">
                     <div className="page_block">
-                        content maincontent maincontent maincontent maincontent maincontent maincontent
-                        maincontent
-                        maincontent maincontent maincontent main
+                        <Routes>
+                            <Route path="/profile" element={<Profile profilePage ={props.profilePage} dispatch = {props.dispatch}/>}/>
+                            {/*<Route path="/news" element={<News/>} />*/}
+                            <Route path="/dialogs" element={<Dialogs dialogsPage={props.dialogsPage} dispatch = {props.dispatch}/>}/>
+                            {/*<Route path="/friends" element={<Friends/>} />*/}
+                            {/*<Route path="/groups" element={<Groups/>} />*/}
+                            {/*<Route path="/foto" element={<Foto/>} />*/}
+                        </Routes>
                     </div>
                 </div>
             </div>
