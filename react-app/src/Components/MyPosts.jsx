@@ -1,16 +1,15 @@
 import React from "react";
 import Ava from "../ava.jpg";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../redux/profile-reducer";
 
 const MyPost = (props) => {
     let PostElements = props.posts.map(post => <PostItem name={post.id} post={post.post} date={post.date}/>);
 
-    let newPostElement = React.createRef();
     let addPost = () => {
         props.dispatch(addPostActionCreator());
     }
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (e) => {
+        let text = e.target.value;
         props.dispatch(updateNewPostTextActionCreator(text));
     }
     return (
@@ -18,7 +17,7 @@ const MyPost = (props) => {
         <div className="im-page--dialogs _im_page_dialogs page_block">
             <div>МОИ ПОСТЫ</div>
             <ul id="im_dialogs" className="im-page--dcontent ui_clean_list _im_page_dcontent">
-                <div><textarea value={props.newPostText} onChange={onPostChange} ref={newPostElement}></textarea></div>
+                <div><textarea value={props.newPostText} onChange={onPostChange} ></textarea></div>
                 <div>
                     <button onClick={addPost}>Добавить запись</button>
                 </div>

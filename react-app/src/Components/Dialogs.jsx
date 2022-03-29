@@ -1,6 +1,6 @@
 import React from "react";
 import DialogItem from "./MyDialog";
-import {sendMessageCreator, updateNewMessageBody} from "../redux/state";
+import {sendMessageCreator, updateNewMessageBody} from "../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
     let onSendMessageClick = () => {
