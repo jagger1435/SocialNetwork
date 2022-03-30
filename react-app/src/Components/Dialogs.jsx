@@ -4,18 +4,19 @@ import {sendMessageCreator, updateNewMessageBody} from "../redux/dialogs-reducer
 
 const Dialogs = (props) => {
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator());
+        props.sendMessage();
     }
     let onNewChangeMessage = (e) => {
        let message = e.target.value;
-         props.dispatch(updateNewMessageBody(message));
+         props.updateNewMessageBody(message);
     }
-    let dialogElements = props.dialogsPage.messages.map(dialog => <DialogItem name={dialog.id} message={dialog.message}
+    let dialogElements = props.state.messages.map(dialog => <DialogItem name={dialog.id} message={dialog.message}
                                                                   date={dialog.date}/>);
-    let newMessageBody = props.dialogsPage.newMessageText;
+    let newMessageBody = props.state.newMessageText;
+
     return (
         <div className="im-page--dialogs _im_page_dialogs page_block">
-            <div><textarea value= {newMessageBody} placeholder='Введите сообщение...' onChange={onNewChangeMessage}></textarea></div>
+            <div><textarea value= {props.newMessageBody} placeholder='Введите сообщение...' onChange={onNewChangeMessage}></textarea></div>
             <div>
                 <button onClick={onSendMessageClick}>Отправить</button>
             </div>

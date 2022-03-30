@@ -3,6 +3,7 @@ import Dialogs from "./Dialogs";
 import Profile from "./Profile";
 import {Route, Routes} from "react-router-dom";
 import RMenu from "./RMenu";
+import DialogsContainer from "./DialogsContainer";
 
 
 const PageBody = (props) => {
@@ -13,9 +14,9 @@ const PageBody = (props) => {
                 <div className="wide_column ">
                     <div className="page_block">
                         <Routes>
-                            <Route path="/profile" element={<Profile profilePage ={props.profilePage} dispatch = {props.dispatch}/>}/>
+                            <Route path="/profile" element={<Profile store ={props.store}/>}/>
                             {/*<Route path="/news" element={<News/>} />*/}
-                            <Route path="/dialogs" element={<Dialogs dialogsPage={props.dialogsPage} dispatch = {props.dispatch}/>}/>
+                            <Route path="/dialogs" element={<DialogsContainer store ={props.store}/>}/>
                             {/*<Route path="/friends" element={<Friends/>} />*/}
                             {/*<Route path="/groups" element={<Groups/>} />*/}
                             {/*<Route path="/foto" element={<Foto/>} />*/}

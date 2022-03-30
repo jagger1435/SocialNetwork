@@ -1,25 +1,27 @@
 import React from "react";
 import Ava from "../ava.jpg";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../redux/profile-reducer";
 
-const MyPost = (props) => {
+
+const MyPosts = (props) => {
     let PostElements = props.posts.map(post => <PostItem name={post.id} post={post.post} date={post.date}/>);
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
-    let onPostChange = (e) => {
-        let text = e.target.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+let newPostElement = React.createRef();
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
     }
+
     return (
 
         <div className="im-page--dialogs _im_page_dialogs page_block">
             <div>МОИ ПОСТЫ</div>
             <ul id="im_dialogs" className="im-page--dcontent ui_clean_list _im_page_dcontent">
-                <div><textarea value={props.newPostText} onChange={onPostChange} ></textarea></div>
+                <div><textarea value={props.newPostText}  ref={newPostElement} onChange={onPostChange} ></textarea></div>
                 <div>
-                    <button onClick={addPost}>Добавить запись</button>
+                    <button onClick={onAddPost}>Добавить запись</button>
                 </div>
                 {PostElements}
             </ul>
@@ -69,4 +71,4 @@ const PostItem = (props) => {
             </div>
         </li>)
 }
-export default MyPost;
+export default MyPosts;

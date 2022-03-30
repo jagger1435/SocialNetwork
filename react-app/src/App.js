@@ -13,7 +13,7 @@ function App(props) {
             <Header/>
             <div id="page_layout">
                 <Sidebar/>
-                <PageBody dialogsPage = {props.appState.dialogsPage} profilePage = {props.appState.profilePage}  dispatch = {props.dispatch}  />
+                <PageBody store = {props.store}/>
             </div>
         </div>
         </BrowserRouter>
